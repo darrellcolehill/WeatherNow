@@ -35,7 +35,7 @@ A simple React Native app that fetches and displays the current weather data for
        
 3. Open your desired emulator in android studio
 
-4. Open a second terminal and run the command: `npx react-native run-android `
+4. Open a second terminal in the WeatherNow folder and run the command: `npx react-native run-android `
 
 ## Difficulties
 
