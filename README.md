@@ -27,7 +27,7 @@ A simple React Native app that fetches and displays the current weather data for
 
        OPEN_WEATHER_KEY='<YOUR_OPEN_WEATHER_API_KEY>'
   
-       OPEN_WEAHTER_BASE_URL='https://api.openweathermap.org/data/2.5/weather'
+       OPEN_WEATHER_BASE_URL='https://api.openweathermap.org/data/2.5/weather'
   
 3. Open a terminal in the WeatherNow folder and run the following commands:
 
