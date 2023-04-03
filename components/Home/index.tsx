@@ -17,7 +17,6 @@ import styles from './style';
 
 export function Home() {
 
-    //const [location, setLocation] = useState<any>(undefined);
     const [errorMsg, setErrorMsg] = useState("");
     const [weather, setWeather] = useState<any>(undefined);
     const [selectedUnit, setSelectedUnit] = useState<string>("Fahrenheit");
@@ -25,7 +24,6 @@ export function Home() {
 
     
     async function fetchWeather(latitude: number, longitude: number, units: string) {
-        //latitude = 40;
         try {
             const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?units=${units}&lat=${latitude}&lon=${longitude}&appid=${WEATHER_NOW_KEY}`);
             setWeather(response.data);
@@ -64,25 +62,24 @@ export function Home() {
     async function getLocation() {
         try {
             const result = await requestLocationPermission();
+
             if (result) {
                 const position: any = await new Promise((resolve, reject) => {
                     Geolocation.getCurrentPosition(
-                    position => {
-                        resolve(position);                        
-                    },
-                    error => {
-                        if(error.code === 2) {
-                        setErrorMsg("Unable to fetch most recent weather data.\nPlease enable location.");
-                        }
-                        reject(error)
-                    },
-                    { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+                        (position) => {
+                            resolve(position);                        
+                        },
+                        (error) => {
+                            if(error.code === 2) {
+                            setErrorMsg("Unable to fetch most recent weather data.\nPlease enable location.");
+                            }
+                            reject(error)
+                        },
+                        { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
                     );
                 });
-                //setLocation(position);
                 setErrorMsg("");
-                return position.coords;
-                
+                return position.coords;   
             }
         } catch (error) {
             return undefined;

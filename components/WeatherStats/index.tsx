@@ -39,6 +39,5 @@ export function WeatherStats({weather, unit} : WeatherStatsProps) {
                 </View>
             </View>
         </>
-
     )
 }
