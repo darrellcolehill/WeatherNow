@@ -3,6 +3,7 @@ import {
   View,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import styles from './style';
 
 
 interface UnitPickerProps {
@@ -14,10 +15,10 @@ interface UnitPickerProps {
 export function UnitPicker({handleChange, selectedUnit} : UnitPickerProps) {
 
     return (
-        <View style={{ width:"100%", paddingLeft:"10%", paddingRight:"10%", }}>
+        <View style={styles.container}>
             <Picker
                 selectedValue={selectedUnit}
-                style={{alignSelf:"center", width:"50%", minWidth: 150 }} // width:"50%"
+                style={styles.picker}
                 mode={"dialog"}
                 onValueChange={(itemValue) => handleChange(itemValue)}
             >

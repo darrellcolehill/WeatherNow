@@ -9,10 +9,10 @@ import {
 import axios from 'axios';
 import Geolocation from 'react-native-geolocation-service';
 import { Button } from 'react-native-paper';
-import { WeatherStats } from './WeatherStats';
-import { UnitPicker } from './UnitPicker';
+import { WeatherStats } from '../WeatherStats';
+import { UnitPicker } from '../UnitPicker';
 import {WEATHER_NOW_KEY} from '@env'
-
+import styles from './style';
 
 
 export function Home() {
@@ -125,31 +125,30 @@ export function Home() {
 
 
     return (
-        <View style={{paddingTop:"5%"}}>
-            <View style={{flexDirection: 'column', alignItems:"center",}}>
-                <Text style={{fontWeight:"bold", fontSize:16}}>{weather !== undefined ? `${weather.name}, ${weather.sys.country}` : ""} </Text>
+        <View style={styles.container}>
+            <View style={styles.locationContainer}>
+                <Text style={styles.locationText}>
+                    {weather !== undefined ? `${weather.name}, ${weather.sys.country}` : ""} 
+                </Text>
             </View>
 
             <Button
-                style={{alignSelf:"flex-end", paddingRight:"5%", paddingTop:15}}
+                style={styles.refreshButton}
                 onPress={() => handleWeatherCheck(selectedUnit)}
                 accessibilityLabel="Refresh weather data"
             >REFRESH</Button>
 
-            <View style={{flexDirection: 'column', alignItems:"center",}}>
-                <View style={{width:"100%", height:225}}>
+            <View>
+                <View style={styles.loadingIconContainer}>
                     { (isLoading === true) ? 
-                        <View style={{alignSelf:"center", alignItems:"center", width:"100%",}}>
-                            <ActivityIndicator size="large" animating={true} style={{width: 125, height: 125,}}/> 
-                        </View>                : 
-                        <>
-                            <WeatherStats weather={weather} unit={selectedUnit}/>
-                        </>
+                        <ActivityIndicator size="large" animating={true} style={styles.loadingIcon}/> 
+                    : 
+                        <WeatherStats weather={weather} unit={selectedUnit}/>
                     }
                 </View>
                 
-                <View style={{alignSelf:"center"}}>
-                    <Text style={{fontWeight:"bold"}}>{errorMsg}</Text>
+                <View style={styles.errorMessageContainer}>
+                    <Text style={styles.errorMessage}>{errorMsg}</Text>
                 </View>
 
                 <UnitPicker selectedUnit={selectedUnit} handleChange={handleUnitChange}/>
