@@ -12,7 +12,6 @@ import {
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
 import { Home } from './components/Home';
-import {} from '@env';
 
 
 function App(): JSX.Element {
