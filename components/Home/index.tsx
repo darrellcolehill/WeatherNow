@@ -11,7 +11,7 @@ import Geolocation from 'react-native-geolocation-service';
 import { Button } from 'react-native-paper';
 import { WeatherStats } from '../WeatherStats';
 import { UnitPicker } from '../UnitPicker';
-import { OPEN_WEATHER_KEY, OPEN_WEAHTER_BASE_URL } from '@env'
+import { OPEN_WEATHER_KEY, OPEN_WEATHER_BASE_URL } from '@env'
 import styles from './style';
 
 
@@ -25,8 +25,9 @@ export function Home() {
     
     async function fetchWeather(latitude: number, longitude: number, units: string) {
         try {
-            const response = await axios.get(`${OPEN_WEAHTER_BASE_URL}?units=${units}&lat=${latitude}&lon=${longitude}&appid=${OPEN_WEATHER_KEY}`);
+            const response = await axios.get(`${OPEN_WEATHER_BASE_URL}?units=${units}&lat=${latitude}&lon=${longitude}&appid=${OPEN_WEATHER_KEY}`);
             setWeather(response.data);
+            setErrorMsg("");
    
         } catch(error) {
             setErrorMsg("Unable to get weather data. \nMake sure that you have internet connection.")
