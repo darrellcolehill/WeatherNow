@@ -21,19 +21,19 @@ A simple React Native app that fetches and displays the current weather data for
 
 ## Running the application
 
-1. Open your desired emulator in android studio
-
-2. Create a .env file and place it in the WeatherNow folder and add the following lines:
+1. Create a .env file and place it in the WeatherNow folder and add the following lines:
 
        OPEN_WEATHER_KEY='<YOUR_OPEN_WEATHER_API_KEY>'
   
        OPEN_WEATHER_BASE_URL='https://api.openweathermap.org/data/2.5/weather'
   
-3. Open a terminal in the WeatherNow folder and run the following commands:
+2. Open a terminal in the WeatherNow folder and run the following commands:
 
        npm install
   
        npx react-native start
+       
+3. Open your desired emulator in android studio
 
 4. Open a second terminal and run the command: `npx react-native run-android `
 
